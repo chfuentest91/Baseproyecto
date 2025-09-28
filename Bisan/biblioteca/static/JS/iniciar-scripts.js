@@ -3,7 +3,6 @@
   if (!$) { console.error('jQuery no cargó'); return; }
 
   $(function () {
-    // =============== CSRF ===============
     function getCookie(name) {
       let cookieValue = null;
       if (document.cookie && document.cookie !== "") {
@@ -23,9 +22,9 @@
       (document.querySelector('[name=csrfmiddlewaretoken]') || {}).value ||
       "";
 
-    // =============== UI helpers ===============
+
     const EXPLICIT_ERR = {
-      ClaveLogin: $("#claveError") // <div id="claveError"> bajo la contraseña
+      ClaveLogin: $("#claveError")
     };
 
     function getErrorBox($el) {
@@ -68,7 +67,7 @@
 
       const $Email = $("#EmailLogin");
       const $Clave = $("#ClaveLogin");
-      const $Btn   = $(this).find('button[type="submit"]');
+      const $Btn = $(this).find('button[type="submit"]');
 
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -84,7 +83,7 @@
 
       const payload = {
         correo: $Email.val().trim().toLowerCase(),
-        clave:  $Clave.val().trim()
+        clave: $Clave.val().trim()
       };
 
       const LOGIN_URL = window.LOGIN_URL || "/core/login/";
@@ -101,20 +100,18 @@
         headers: { "X-CSRFToken": csrftoken },
 
         success: function (res) {
-          // Si el backend reporta fallo explícito
+          // Si el backend reporta fallo 
           if (res && res.success === false) {
             $("#loginError").text(res.error || "No se pudo iniciar sesión.").show();
             $Btn.prop("disabled", false).text(originalText);
             return;
           }
 
-          // Preferir next_url si el backend la envía
           if (res && res.next_url) {
             window.location.assign(res.next_url);
             return;
           }
 
-          // Si no hay next_url, redirigir por rol (si viene)
           const rolNombre = (res && res.rol ? String(res.rol) : "").toLowerCase();
           const redirects = {
             superusuario: "/core/admin/",

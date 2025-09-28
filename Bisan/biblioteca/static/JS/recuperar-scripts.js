@@ -3,16 +3,16 @@ $(document).ready(function () {
 
 
     $("#contactForm").submit(function (event) {
-        event.preventDefault(); // Evita el envío por defecto
+        event.preventDefault(); // No envio por defecto
         let isValid = true;
 
 
-        $(".error-message").hide(); // Ocultar mensajes previos
-        $(".form-control").removeClass("is-invalid"); // Quitar estilos previos
+        $(".error-message").hide(); // Ocultar mensajes 
+        $(".form-control").removeClass("is-invalid"); // Quitar estilos 
 
 
 
-        // Validar el campo Email (Obligatorio y formato válido)
+        // Validar el email
         let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if ($("#Email").val().trim() === "" || !emailPattern.test($("#Email").val())) {
             $("#Email").addClass("is-invalid");

@@ -2,7 +2,6 @@
   'use strict';
 
   $(function () {
-    // ---- CSRF cookie (Django docs pattern) ----
     function getCookie(name) {
       let cookieValue = null;
       if (document.cookie && document.cookie !== "") {
@@ -18,7 +17,6 @@
     }
     const csrftoken = getCookie("csrftoken");
 
-    // ---- Cached elements (all lowercase to match HTML) ----
     const $form = $("#contactForm");
     const $nombre = $("#nombre");
     const $apellidos = $("#apellidos");
@@ -29,7 +27,6 @@
     const $clave = $("#clave");
     const $clave2 = $("#clave2");
 
-    // ---- Helpers ----
     function showErr($el, msg) { $el.addClass("is-invalid"); $el.next(".error-message").text(msg).show(); }
     function clrErr($el) { $el.removeClass("is-invalid"); $el.next(".error-message").text("").hide(); }
 
@@ -62,7 +59,6 @@
       $("#claveError,#clave2Error").text("").hide();
     });
 
-    // ---- Submit ----
     $("#contactForm").on("submit", function (e) {
       e.preventDefault();
 

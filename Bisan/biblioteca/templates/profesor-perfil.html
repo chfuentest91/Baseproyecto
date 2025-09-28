@@ -13,7 +13,7 @@
 
 <body>
 
-{% include "segments/header.html" %}
+    {% include "segments/header.html" %}
 
 
     <main class="container text-bg-light mt-5">
@@ -49,13 +49,13 @@
         </div>
     </footer>
 
-<script>
-    window.urls = {
-      
-        profesor: "{% url 'Profesor' %}",
-        
-    };
-</script>
+    <script>
+        window.urls = {
+
+            profesor: "{% url 'profesor_perfil' %}",
+
+        };
+    </script>
 
 
 

@@ -3,107 +3,167 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrito de Compras</title>
-    <link rel="stylesheet" href="{% static './CSS/style.css' %}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrito de Compras</title>
+  <link rel="stylesheet" href="{% static './CSS/style.css' %}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
 
 <body>
- {% include "segments/header.html" %}
+  {% include "segments/header.html" %}
 
   <table class="table table-striped table-hover align-middle text-center">
-  <thead class="table-light">
-    <tr>
-      <th>#</th>
-      <th>IDIOMA</th>
-      <th>ASIGNATURAS</th>
-      <th>PROFESOR</th>
-      <th>HORARIO</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <!-- Inglés -->
-    <tr class="table-secondary fw-semibold">
-      <td colspan="6" class="text-start">Inglés</td>
-    </tr>
-    <tr>
-      <th>1</th><td>INGLÉS</td><td>Inglés Básico</td><td>Tyler Bryant</td><td>LUNES A VIERNES  08:00 - 11:00</td>
-      <td><button type="button" class="btn btn-primary btn-add" style="--bs-btn-padding-y:.25rem;--bs-btn-padding-x:.5rem;--bs-btn-font-size:.75rem;">Añadir</button></td>
-    </tr>
-    <tr>
-      <th>2</th><td>INGLÉS</td><td>Inglés Intermedio</td><td>Tyler Bryant</td><td>LUNES A VIERNES  12:00 - 15:00</td>
-      <td><button type="button" class="btn btn-primary btn-add" style="--bs-btn-padding-y:.25rem;--bs-btn-padding-x:.5rem;--bs-btn-font-size:.75rem;">Añadir</button></td>
-    </tr>
-    <tr>
-      <th>3</th><td>INGLÉS</td><td>Inglés Avanzado</td><td>Tyler Bryant</td><td>LUNES A VIERNES  16:00 - 19:00</td>
-      <td><button type="button" class="btn btn-primary btn-add" style="--bs-btn-padding-y:.25rem;--bs-btn-padding-x:.5rem;--bs-btn-font-size:.75rem;">Añadir</button></td>
-    </tr>
+    <thead class="table-light">
+      <tr>
+        <th>#</th>
+        <th>IDIOMA</th>
+        <th>ASIGNATURAS</th>
+        <th>PROFESOR</th>
+        <th>HORARIO</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
 
-    <!-- Francés -->
-    <tr class="table-secondary fw-semibold">
-      <td colspan="6" class="text-start">Francés</td>
-    </tr>
-    <tr>
-      <th>1</th><td>FRANCÉS</td><td>Francés Básico</td><td>Matias Torres</td><td>LUNES A VIERNES  08:00 - 11:00</td>
-      <td><button type="button" class="btn btn-primary btn-add" style="--bs-btn-padding-y:.25rem;--bs-btn-padding-x:.5rem;--bs-btn-font-size:.75rem;">Añadir</button></td>
-    </tr>
-    <tr>
-      <th>2</th><td>FRANCÉS</td><td>Francés Intermedio</td><td>Matias Torres</td><td>LUNES A VIERNES  12:00 - 15:00</td>
-      <td><button type="button" class="btn btn-primary btn-add" style="--bs-btn-padding-y:.25rem;--bs-btn-padding-x:.5rem;--bs-btn-font-size:.75rem;">Añadir</button></td>
-    </tr>
-    <tr>
-      <th>3</th><td>FRANCÉS</td><td>Francés Avanzado</td><td>Matias Torres</td><td>LUNES A VIERNES  16:00 - 19:00</td>
-      <td><button type="button" class="btn btn-primary btn-add" style="--bs-btn-padding-y:.25rem;--bs-btn-padding-x:.5rem;--bs-btn-font-size:.75rem;">Añadir</button></td>
-    </tr>
+      <!-- Inglés -->
+      <tr class="table-secondary fw-semibold">
+        <td colspan="6" class="text-start">Inglés</td>
+      </tr>
+      <tr>
+        <th>1</th>
+        <td>INGLÉS</td>
+        <td>Inglés Básico</td>
+        <td>Tyler Bryant</td>
+        <td>LUNES A VIERNES 08:00 - 11:00</td>
+        <td><button type="button" class="btn btn-primary btn-add"
+            style="--bs-btn-padding-y:.25rem;--bs-btn-padding-x:.5rem;--bs-btn-font-size:.75rem;">Añadir</button></td>
+      </tr>
+      <tr>
+        <th>2</th>
+        <td>INGLÉS</td>
+        <td>Inglés Intermedio</td>
+        <td>Tyler Bryant</td>
+        <td>LUNES A VIERNES 12:00 - 15:00</td>
+        <td><button type="button" class="btn btn-primary btn-add"
+            style="--bs-btn-padding-y:.25rem;--bs-btn-padding-x:.5rem;--bs-btn-font-size:.75rem;">Añadir</button></td>
+      </tr>
+      <tr>
+        <th>3</th>
+        <td>INGLÉS</td>
+        <td>Inglés Avanzado</td>
+        <td>Tyler Bryant</td>
+        <td>LUNES A VIERNES 16:00 - 19:00</td>
+        <td><button type="button" class="btn btn-primary btn-add"
+            style="--bs-btn-padding-y:.25rem;--bs-btn-padding-x:.5rem;--bs-btn-font-size:.75rem;">Añadir</button></td>
+      </tr>
 
-    <!-- Alemán -->
-    <tr class="table-secondary fw-semibold">
-      <td colspan="6" class="text-start">Alemán</td>
-    </tr>
-    <tr>
-      <th>1</th><td>ALEMÁN</td><td>Alemán Básico</td><td>Antonia Pascal</td><td>LUNES A VIERNES  08:00 - 11:00</td>
-      <td><button type="button" class="btn btn-primary btn-add" style="--bs-btn-padding-y:.25rem;--bs-btn-padding-x:.5rem;--bs-btn-font-size:.75rem;">Añadir</button></td>
-    </tr>
-    <tr>
-      <th>2</th><td>ALEMÁN</td><td>Alemán Intermedio</td><td>Antonia Pascal</td><td>LUNES A VIERNES  12:00 - 15:00</td>
-      <td><button type="button" class="btn btn-primary btn-add" style="--bs-btn-padding-y:.25rem;--bs-btn-padding-x:.5rem;--bs-btn-font-size:.75rem;">Añadir</button></td>
-    </tr>
-    <tr>
-      <th>3</th><td>ALEMÁN</td><td>Alemán Avanzado</td><td>Antonia Pascal</td><td>LUNES A VIERNES  16:00 - 19:00</td>
-      <td><button type="button" class="btn btn-primary btn-add" style="--bs-btn-padding-y:.25rem;--bs-btn-padding-x:.5rem;--bs-btn-font-size:.75rem;">Añadir</button></td>
-    </tr>
+      <!-- Francés -->
+      <tr class="table-secondary fw-semibold">
+        <td colspan="6" class="text-start">Francés</td>
+      </tr>
+      <tr>
+        <th>1</th>
+        <td>FRANCÉS</td>
+        <td>Francés Básico</td>
+        <td>Matias Torres</td>
+        <td>LUNES A VIERNES 08:00 - 11:00</td>
+        <td><button type="button" class="btn btn-primary btn-add"
+            style="--bs-btn-padding-y:.25rem;--bs-btn-padding-x:.5rem;--bs-btn-font-size:.75rem;">Añadir</button></td>
+      </tr>
+      <tr>
+        <th>2</th>
+        <td>FRANCÉS</td>
+        <td>Francés Intermedio</td>
+        <td>Matias Torres</td>
+        <td>LUNES A VIERNES 12:00 - 15:00</td>
+        <td><button type="button" class="btn btn-primary btn-add"
+            style="--bs-btn-padding-y:.25rem;--bs-btn-padding-x:.5rem;--bs-btn-font-size:.75rem;">Añadir</button></td>
+      </tr>
+      <tr>
+        <th>3</th>
+        <td>FRANCÉS</td>
+        <td>Francés Avanzado</td>
+        <td>Matias Torres</td>
+        <td>LUNES A VIERNES 16:00 - 19:00</td>
+        <td><button type="button" class="btn btn-primary btn-add"
+            style="--bs-btn-padding-y:.25rem;--bs-btn-padding-x:.5rem;--bs-btn-font-size:.75rem;">Añadir</button></td>
+      </tr>
 
-    <!-- Español -->
-    <tr class="table-secondary fw-semibold">
-      <td colspan="6" class="text-start">Español</td>
-    </tr>
-    <tr>
-      <th>1</th><td>ESPAÑOL</td><td>Español Básico</td><td>Felipe Saavedra</td><td>LUNES A VIERNES  08:00 - 11:00</td>
-      <td><button type="button" class="btn btn-primary btn-add" style="--bs-btn-padding-y:.25rem;--bs-btn-padding-x:.5rem;--bs-btn-font-size:.75rem;">Añadir</button></td>
-    </tr>
-    <tr>
-      <th>2</th><td>ESPAÑOL</td><td>Español Intermedio</td><td>Felipe Saavedra</td><td>LUNES A VIERNES  12:00 - 15:00</td>
-      <td><button type="button" class="btn btn-primary btn-add" style="--bs-btn-padding-y:.25rem;--bs-btn-padding-x:.5rem;--bs-btn-font-size:.75rem;">Añadir</button></td>
-    </tr>
-    <tr>
-      <th>3</th><td>ESPAÑOL</td><td>Español Avanzado</td><td>Felipe Saavedra</td><td>LUNES A VIERNES  16:00 - 19:00</td>
-      <td><button type="button" class="btn btn-primary btn-add" style="--bs-btn-padding-y:.25rem;--bs-btn-padding-x:.5rem;--bs-btn-font-size:.75rem;">Añadir</button></td>
-    </tr>
-  </tbody>
-</table>
+      <!-- Alemán -->
+      <tr class="table-secondary fw-semibold">
+        <td colspan="6" class="text-start">Alemán</td>
+      </tr>
+      <tr>
+        <th>1</th>
+        <td>ALEMÁN</td>
+        <td>Alemán Básico</td>
+        <td>Antonia Pascal</td>
+        <td>LUNES A VIERNES 08:00 - 11:00</td>
+        <td><button type="button" class="btn btn-primary btn-add"
+            style="--bs-btn-padding-y:.25rem;--bs-btn-padding-x:.5rem;--bs-btn-font-size:.75rem;">Añadir</button></td>
+      </tr>
+      <tr>
+        <th>2</th>
+        <td>ALEMÁN</td>
+        <td>Alemán Intermedio</td>
+        <td>Antonia Pascal</td>
+        <td>LUNES A VIERNES 12:00 - 15:00</td>
+        <td><button type="button" class="btn btn-primary btn-add"
+            style="--bs-btn-padding-y:.25rem;--bs-btn-padding-x:.5rem;--bs-btn-font-size:.75rem;">Añadir</button></td>
+      </tr>
+      <tr>
+        <th>3</th>
+        <td>ALEMÁN</td>
+        <td>Alemán Avanzado</td>
+        <td>Antonia Pascal</td>
+        <td>LUNES A VIERNES 16:00 - 19:00</td>
+        <td><button type="button" class="btn btn-primary btn-add"
+            style="--bs-btn-padding-y:.25rem;--bs-btn-padding-x:.5rem;--bs-btn-font-size:.75rem;">Añadir</button></td>
+      </tr>
+
+
+      <tr class="table-secondary fw-semibold">
+        <td colspan="6" class="text-start">Español</td>
+      </tr>
+      <tr>
+        <th>1</th>
+        <td>ESPAÑOL</td>
+        <td>Español Básico</td>
+        <td>Felipe Saavedra</td>
+        <td>LUNES A VIERNES 08:00 - 11:00</td>
+        <td><button type="button" class="btn btn-primary btn-add"
+            style="--bs-btn-padding-y:.25rem;--bs-btn-padding-x:.5rem;--bs-btn-font-size:.75rem;">Añadir</button></td>
+      </tr>
+      <tr>
+        <th>2</th>
+        <td>ESPAÑOL</td>
+        <td>Español Intermedio</td>
+        <td>Felipe Saavedra</td>
+        <td>LUNES A VIERNES 12:00 - 15:00</td>
+        <td><button type="button" class="btn btn-primary btn-add"
+            style="--bs-btn-padding-y:.25rem;--bs-btn-padding-x:.5rem;--bs-btn-font-size:.75rem;">Añadir</button></td>
+      </tr>
+      <tr>
+        <th>3</th>
+        <td>ESPAÑOL</td>
+        <td>Español Avanzado</td>
+        <td>Felipe Saavedra</td>
+        <td>LUNES A VIERNES 16:00 - 19:00</td>
+        <td><button type="button" class="btn btn-primary btn-add"
+            style="--bs-btn-padding-y:.25rem;--bs-btn-padding-x:.5rem;--bs-btn-font-size:.75rem;">Añadir</button></td>
+      </tr>
+    </tbody>
+  </table>
 
 
 
-    <footer class="footer">
-        <div class="text-center p-4">
-            © 2025 Copyright: BISAN CHILE
-        </div>
-    </footer>
+  <footer class="footer">
+    <div class="text-center p-4">
+      © 2025 Copyright: BISAN CHILE
+    </div>
+  </footer>
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

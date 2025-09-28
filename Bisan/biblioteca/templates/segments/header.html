@@ -1,65 +1,65 @@
 {% load static %}
 
 <header>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
 
-      <!-- Logo -->
-      <a class="navbar-brand d-flex align-items-center" href="{% url 'Cursos' %}">
-        <img src="{% static 'img/logo.jpg' %}" alt="Logo BISAN" class="logo">
-      </a>
+            <a class="navbar-brand d-flex align-items-center" href="{% url 'Cursos' %}">
+                <img src="{% static 'img/logo.jpg' %}" alt="Logo BISAN" class="logo me-2">
+                <span class="fw-bold"></span>
+            </a>
 
-      <!-- Botón hamburguesa -->
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-              data-bs-target="#navbarNav" aria-controls="navbarNav"
-              aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
 
-      <!-- Contenido colapsable -->
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto align-items-lg-center gap-2">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-          <!-- Siempre visibles -->
-          <li class="nav-item">
-            <a class="btn btn-success" href="{% url 'Cursos' %}">HOME</a>
-          </li>
-          <li class="nav-item">
-            <a class="btn btn-info" href="{% url 'Carrito' %}">Carrito de Compras</a>
-          </li>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-2">
 
-          {% if request.session.usuario_id %}
-            <!-- Usuario con sesión: dropdown -->
-            <li class="nav-item dropdown">
-              <a class="btn btn-primary dropdown-toggle" href="#" role="button"
-                 data-bs-toggle="dropdown" aria-expanded="false">
-                Hola {{ request.session.usuario_nombre|default:"Mi cuenta" }}
-              </a>
-              <ul class="dropdown-menu dropdown-menu-end">
-                {% if request.session.usuario_rol == 1 or request.session.usuario_rol == 2 %}
-                  <li><a class="dropdown-item" href="{% url 'superusuario' %}">Administrar Usuarios</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                {% endif %}
-                <li>
-                  <a class="dropdown-item" href="{% url 'mi_perfil' %}">
-                    Editar mi perfil
-                  </a>
+
+                    <li class="nav-item">
+                        <a class="btn {% if request.resolver_match and request.resolver_match.url_name == 'Cursos' %}btn-success{% else %}btn-outline-success{% endif %}"
+                            href="{% url 'Cursos' %}">HOME</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="btn btn-info" href="{% url 'Carrito' %}">Carrito de Compras</a>
+                    </li>
+
+                    {% if request.session.usuario_id %}
+                    <li class="nav-item dropdown">
+                        <a class="btn btn-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Hola {{ request.session.usuario_nombre|default:"Mi cuenta" }}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            {% if request.session.usuario_rol == 1 or request.session.usuario_rol == 2 %}
+                            <li><a class="dropdown-item" href="{% url 'superusuario' %}">Administrar Usuarios</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            {% endif %}
+                            <li>
+                                <a class="dropdown-item" href="{% url 'mi_perfil' %}">Editar mi perfil</a>
+                            </li>
+                            <a class="dropdown-item text-danger" href="{% url 'cerrar_sesion' %}">Cerrar sesión</a>
+                    </li>
+                </ul>
                 </li>
-                <li><a class="dropdown-item text-danger" href="{% url 'cerrar_sesion' %}">Cerrar sesión</a></li>
-              </ul>
-            </li>
-          {% else %}
-            <!-- Visitante: botones normales -->
-            <li class="nav-item">
-              <a class="btn btn-info" href="{% url 'registro' %}">Registrarse</a>
-            </li>
-            <li class="nav-item">
-              <a class="btn btn-info" href="{% url 'Sesion' %}">Iniciar Sesión</a>
-            </li>
-          {% endif %}
+                {% else %}
 
-        </ul>
-      </div>
-    </div>
-  </nav>
+                <li class="nav-item">
+                    <a class="btn btn-info" href="{% url 'registro' %}">Registrarse</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-info" href="{% url 'Sesion' %}">Iniciar Sesión</a>
+                </li>
+                {% endif %}
+
+                </ul>
+            </div>
+        </div>
+    </nav>
 </header>
