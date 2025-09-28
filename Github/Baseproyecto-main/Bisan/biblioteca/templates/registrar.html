@@ -1,0 +1,124 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registrarse</title>
+    <link rel="stylesheet" href="{% static 'CSS/style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    {% include "segments/header.html" %}
+
+    <main class="container text-bg-light mt-5">
+        <h1>REGISTRARSE</h1>
+
+        <form id="contactForm" method="post" action="{% url 'registrar_usuario' %}">
+            {% csrf_token %}
+
+            <!-- 1) Nombres -->
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombres</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" autocomplete="given-name">
+                <div class="error-message text-danger"></div>
+            </div>
+
+            <!-- 2) Apellidos -->
+            <div class="mb-3">
+                <label for="apellidos" class="form-label">Apellidos</label>
+                <input type="text" class="form-control" id="apellidos" name="apellidos" autocomplete="family-name">
+                <div class="error-message text-danger"></div>
+            </div>
+
+            <!-- 3) Correo -->
+            <div class="mb-3">
+                <label for="correo" class="form-label">Correo Electrónico</label>
+                <input type="email" class="form-control" id="correo" name="correo" placeholder="example@example.com"
+                    autocomplete="email">
+                <div class="error-message text-danger"></div>
+            </div>
+
+            <!-- 4) Dirección -->
+            <div class="mb-3">
+                <label for="direccion" class="form-label">Dirección</label>
+                <input type="text" class="form-control" id="direccion" name="direccion" autocomplete="street-address">
+                <div class="error-message text-danger"></div>
+            </div>
+
+            <!-- 5) Teléfono -->
+            <div class="mb-3">
+                <label for="telefono" class="form-label">Teléfono</label>
+                <input type="tel" class="form-control" id="telefono" name="telefono" inputmode="tel" pattern="\d{8,15}"
+                    placeholder="Ej: 987654321">
+                <div class="error-message text-danger"></div>
+            </div>
+
+            <!-- 6) Contraseña -->
+            <div class="mb-3">
+                <label for="clave" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="clave" name="clave" placeholder="Ingresa una contraseña"
+                    autocomplete="new-password">
+                <p class="mb-1">Debe tener al menos una mayúscula, un número y entre 6 y 18 caracteres.</p>
+                <div class="error-message text-danger" id="claveError"></div>
+            </div>
+
+            <!-- Confirmación de contraseña (se mantiene) -->
+            <div class="mb-3">
+                <label for="clave2" class="form-label">Confirmar contraseña</label>
+                <input type="password" class="form-control" id="clave2" name="clave2" placeholder="Repite la contraseña"
+                    autocomplete="new-password">
+                <div class="error-message text-danger" id="clave2Error"></div>
+            </div>
+
+            <!-- 7) Tipo de Usuario -->
+            <div class="mb-3">
+                <label for="rol" class="form-label">Tipo de Usuario</label>
+                <select id="rol" name="rol" class="form-select" required>
+                    <option value="" selected disabled>Selecciona un tipo</option>
+                    <option value="1">Superusuario</option>
+                    <option value="2">Administrador</option>
+                    <option value="3">Invitado</option>
+                    <option value="4">Profesor</option>
+                    <option value="5">Alumno</option>
+                </select>
+                <div class="error-message text-danger"></div>
+            </div>
+
+            <div class="container px-0">
+                <div class="row g-2">
+                    <div class="col">
+                        <button type="button" id="limpiarBtn" class="btn btn-secondary w-100">Limpiar</button>
+                    </div>
+                    <div class="col">
+                        <button type="submit" class="btn btn-primary w-100">Registrar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </main>
+
+    <footer class="footer">
+        <div class="text-center p-4">© 2025 Copyright: BISAN CHILE</div>
+    </footer>
+
+    <script>
+
+        window.REGISTER_URL = "{% url 'registrar_usuario' %}";  /* => /core/registrar/ */
+    </script>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        if (!window.jQuery) {
+            document.write('<script src="{% static "vendor/jquery-3.6.0.min.js" %}"><\/script>');
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'js/registrar-scripts.js' %}"></script>
+</body>
+
+</html>

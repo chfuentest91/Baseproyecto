@@ -1,0 +1,62 @@
+/* Fondo de pantalla */
+
+* {
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-image: url('../img/fondo.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+
+}
+
+
+/* Banner */
+.banner {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  text-align: center;
+  height: 120px; /* Altura */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Logo */
+.logo {
+  max-width: 200px; /* Tamaño */
+  height: auto;
+}
+
+.center-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 0;
+}
+
+.center-image img {
+  max-width: 30%;
+  height: auto;
+  padding: 20px;
+}
+
+
+/* Footer centrado abajo */
+.footer {
+    margin-top: auto;
+    background-color: rgba(0, 0, 0, 0.05);
+    text-align: center;
+    padding: 5px 0;
+    font-size: 14px;
+    color: #333;
+}
+
+
