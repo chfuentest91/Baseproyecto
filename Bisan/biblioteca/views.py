@@ -6,6 +6,12 @@ from django.views.decorators.http import require_POST
 
 from core.models import Usuario
 
+# --- nuevos imports para el traductor ---
+import json
+import requests
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+# ---------------------------------------
 
 def Cursos(request):
     return render(request, 'index.html')
@@ -39,7 +45,6 @@ def superusuario(request):
     return render(request, 'superusuario.html')
 
 
-
 class PerfilForm(forms.ModelForm):
     nueva_contrasena = forms.CharField(
         label="Nueva contraseña",
@@ -62,8 +67,7 @@ class PerfilForm(forms.ModelForm):
         usuario = super().save(commit=False)
         nueva = self.cleaned_data.get("nueva_contrasena")
         if nueva:
-            # Tu modelo usa 'contrasena'
-            usuario.contrasena = make_password(nueva) 
+            usuario.contrasena = make_password(nueva)
         if commit:
             usuario.save()
         return usuario
@@ -81,12 +85,10 @@ def mi_perfil(request):
         form = PerfilForm(request.POST, instance=usuario)
         if form.is_valid():
             usuario = form.save()
-
             request.session["usuario_nombre"] = usuario.nombre
             request.session["usuario_apellidos"] = usuario.apellidos
             request.session["usuario_direccion"] = usuario.direccion
             request.session["usuario_telefono"] = usuario.telefono
-
             messages.success(request, "Perfil actualizado correctamente.")
             return redirect("mi_perfil")
         else:
@@ -159,3 +161,48 @@ def usuario_eliminar(request, pk: int):
     obj.delete()
     messages.success(request, "Usuario eliminado correctamente.")
     return redirect("listar_usuarios")
+
+
+
+#    TRADUCTOR ONLINE
+
+
+def traductor(request):
+    return render(request, "traductor.html")
+
+@csrf_exempt  
+@require_POST
+def api_traducir(request):
+    try:
+        payload = json.loads(request.body.decode("utf-8"))
+        texto   = payload.get("texto", "").strip()
+        origen  = payload.get("origen", "auto")   
+        destino = payload.get("destino", "es")
+
+        if not texto:
+            return JsonResponse({"error": "Texto vacío."}, status=400)
+
+        # Endpoint público de Google Translate
+        url = "https://translate.googleapis.com/translate_a/single"
+        params = {
+            "client": "gtx",
+            "sl": origen,
+            "tl": destino,
+            "dt": "t",
+            "q": texto,
+        }
+        r = requests.get(url, params=params, timeout=10)
+        r.raise_for_status()
+        data = r.json()
+
+       
+        traduccion = "".join(seg[0] for seg in data[0] if seg and seg[0])
+
+        return JsonResponse({
+            "traduccion": traduccion,
+            "origen_detectado": data[2] if len(data) > 2 else origen
+        })
+    except requests.exceptions.RequestException:
+        return JsonResponse({"error": "No se pudo contactar el servicio de traducción."}, status=502)
+    except Exception:
+        return JsonResponse({"error": "Error procesando la solicitud."}, status=500)

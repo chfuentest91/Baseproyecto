@@ -4,26 +4,35 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
 
+           
             <a class="navbar-brand d-flex align-items-center" href="{% url 'Cursos' %}">
                 <img src="{% static 'img/logo.jpg' %}" alt="Logo BISAN" class="logo me-2">
                 <span class="fw-bold"></span>
             </a>
 
+            <a class="btn btn-outline-success ms-3
+                {% if request.resolver_match and request.resolver_match.url_name == 'Traductor' %}btn-success{% endif %}"
+                href="{% url 'Traductor' %}">
+                Traduce Online
+            </a>
 
+          
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
+          
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-lg-center gap-2">
 
-
+                    <!-- HOME -->
                     <li class="nav-item">
                         <a class="btn {% if request.resolver_match and request.resolver_match.url_name == 'Cursos' %}btn-success{% else %}btn-outline-success{% endif %}"
                             href="{% url 'Cursos' %}">HOME</a>
                     </li>
 
+                    <!-- Carrito -->
                     <li class="nav-item">
                         <a class="btn btn-info" href="{% url 'Carrito' %}">Carrito de Compras</a>
                     </li>
@@ -45,18 +54,16 @@
                                 <a class="dropdown-item" href="{% url 'mi_perfil' %}">Editar mi perfil</a>
                             </li>
                             <a class="dropdown-item text-danger" href="{% url 'cerrar_sesion' %}">Cerrar sesión</a>
+                        </ul>
                     </li>
-                </ul>
-                </li>
-                {% else %}
-
-                <li class="nav-item">
-                    <a class="btn btn-info" href="{% url 'registro' %}">Registrarse</a>
-                </li>
-                <li class="nav-item">
-                    <a class="btn btn-info" href="{% url 'Sesion' %}">Iniciar Sesión</a>
-                </li>
-                {% endif %}
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="btn btn-info" href="{% url 'registro' %}">Registrarse</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-info" href="{% url 'Sesion' %}">Iniciar Sesión</a>
+                    </li>
+                    {% endif %}
 
                 </ul>
             </div>
